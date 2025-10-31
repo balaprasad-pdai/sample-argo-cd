@@ -1,10 +1,32 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: html-app-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   rules:
+#   - host: demo1.pmv.one
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: html-app-service
+#             port:
+#               number: 80
+
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: html-app-ingress
+  namespace: html-app        # 👈 Make sure your app is deployed in this namespace
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx    # 👈 Explicitly tell Kubernetes to use NGINX ingress controller
   rules:
   - host: demo1.pmv.one
     http:
