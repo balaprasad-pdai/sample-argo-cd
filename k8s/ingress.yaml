@@ -6,7 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: html-app.local
+  - host: demo1.pmv.one
     http:
       paths:
       - path: /
